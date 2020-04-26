@@ -1,0 +1,81 @@
+if (IS_BUILD_DOWNLOAD_APPLICATION.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+        sourceSets {
+            main {
+                if (IS_BUILD_DOWNLOAD_APPLICATION.toBoolean()) {
+                    manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+                    java.srcDirs = ['src/main/debug/java']
+                    res.srcDirs += ['../app/src/main/res']
+                } else {
+                    manifest.srcFile 'src/main/AndroidManifest.xml'
+                }
+                java.srcDirs += ['src/main/java']
+            }
+        }
+    }
+
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation rootProject.ext.dependencies["androidx:appcompat"]
+    implementation rootProject.ext.dependencies["androidx:constraintlayout"]
+    testImplementation rootProject.ext.dependencies["junit:junit-core"]
+    androidTestImplementation rootProject.ext.dependencies["androidx:test_runner"]
+    androidTestImplementation rootProject.ext.dependencies["androidx:test_espresso-core"]
+
+    implementation rootProject.ext.dependencies["gson:gson-core"]
+    implementation rootProject.ext.dependencies["retrofit2:converter-gson"]
+    implementation rootProject.ext.dependencies["okhttp3:logging-interceptor"]
+    implementation rootProject.ext.dependencies["rxjava2:rxjava-core"]
+    // RxAndroid
+    implementation rootProject.ext.dependencies["rxjava2:rxandroid"]
+
+    implementation project(rootProject.ext.dependencies["module"]["moduleCommonLib"])
+    implementation project(rootProject.ext.dependencies["module"]["moduleHttp"])
+    implementation project(rootProject.ext.dependencies["module"]["moduleCommonBusiness"])
+    implementation rootProject.ext.dependencies["arouter:arouter-api"]
+    annotationProcessor rootProject.ext.dependencies["arouter:arouter-compiler"]
+
+    if (IS_BUILD_DOWNLOAD_APPLICATION.toBoolean()) {
+        runtimeOnly project(rootProject.ext.dependencies["module"]["moduleLogin"])
+        runtimeOnly project(rootProject.ext.dependencies["module"]["moduleConfig"])
+        runtimeOnly project(rootProject.ext.dependencies["module"]["moduleDiagnostics"])
+        runtimeOnly project(rootProject.ext.dependencies["module"]["moduleGetInfo"])
+        runtimeOnly project(rootProject.ext.dependencies["module"]["modulePolling"])
+        runtimeOnly project(rootProject.ext.dependencies["module"]["moduleUpdate"])
+    }
+}

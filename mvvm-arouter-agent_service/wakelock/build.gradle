@@ -1,0 +1,45 @@
+if (IS_BUILD_WAKELOCK_APPLICATION.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation rootProject.ext.dependencies["androidx:appcompat"]
+    testImplementation rootProject.ext.dependencies["junit:junit-core"]
+    androidTestImplementation rootProject.ext.dependencies["androidx:test_runner"]
+    androidTestImplementation rootProject.ext.dependencies["androidx:test_espresso-core"]
+    implementation project(rootProject.ext.dependencies["module"]["moduleCommonLib"])
+    if (IS_BUILD_WAKELOCK_APPLICATION.toBoolean()) {
+        runtimeOnly project(rootProject.ext.dependencies["module"]["moduleLogin"])
+        runtimeOnly project(rootProject.ext.dependencies["module"]["moduleConfig"])
+        runtimeOnly project(rootProject.ext.dependencies["module"]["moduleDiagnostics"])
+        runtimeOnly project(rootProject.ext.dependencies["module"]["moduleDownload"])
+        runtimeOnly project(rootProject.ext.dependencies["module"]["moduleGetInfo"])
+        runtimeOnly project(rootProject.ext.dependencies["module"]["modulePolling"])
+        runtimeOnly project(rootProject.ext.dependencies["module"]["moduleUpdate"])
+    }
+}

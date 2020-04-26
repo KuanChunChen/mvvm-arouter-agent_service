@@ -1,0 +1,40 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light" />
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--dialog-->
+    <style name="baseDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!-- border -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- is float on activity -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- translucence -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- no title -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- custom background -->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="Translucent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/colorTransparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <!-- Note that we use the base animation style here (that is no
+             animations) because we really have no idea how this kind of
+             activity will be used. -->
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+</resources>

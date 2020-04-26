@@ -1,0 +1,33 @@
+{
+  "Serial_Number": "0000000000000000",
+  "Compatible_Flag": 1,
+  "Retry_Count": 2,
+  "Download_Configuration": 510,
+  "CM_Mode": 2,
+  "MERID": "",
+  "TCP": {
+      "Host_IP": "0.0.0.0",
+      "Host_Port": 80,
+      "Transmission_Size": 62780,
+      "Connect_Timeout": 25000,
+      "Tx_Timeout": 30000,
+      "Rx_Timeout": 30000
+  },
+  "TLS": {
+      "Host_IP": "0.0.0.0",
+      "Host_Port": 443,
+      "Verify_Peer": true
+  },
+  "USB": {
+      "Host_IP": "0.0.0.0",
+      "Host_Port": 80
+  },
+  "NAC": {
+      "Protocol": "60",
+      "BlockSize": 1024,
+      "SourceAddr": "AAAA",
+      "DestAddr": "BBBB",
+      "LenType": 1,
+      "AddLenFlag": 0
+  }
+}

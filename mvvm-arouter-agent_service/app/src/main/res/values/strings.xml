@@ -1,0 +1,33 @@
+<resources>
+    <string name="module_app_app_name">CtmsService</string>
+
+    <string name="module_app_confirm_window_title">Install Alert!</string>
+    <string name="module_app_confirm_window_description">Reboot install mode will begin after you confirm.</string>
+
+
+    <string name="module_app_full_date">yyyy/MM/dd HH:mm:ss</string>
+
+
+    <!-- dialog start-->
+    <string name="module_app_updateMsg">Do you want to update %1$s  ? </string>
+    <string name="module_app_uninstallMsg">%1$s will be uninstalled .</string>
+    <string name="module_app_installTitle">Install App</string>
+    <string name="module_app_updateTitle">Update App</string>
+    <string name="module_app_uninstallTitle">Uninstall App</string>
+    <string name="module_app_installMsg">install %1$s </string>
+    <string name="module_app_positiveBtn">yes</string>
+    <string name="module_app_negativeBtn">Cancel</string>
+    <string name="module_app_countDownTime">%1$d s</string>
+    <!-- dialog end-->
+
+    <!--main activity end-->
+    <string name="module_app_dialog_content">Whether to install the app</string>
+    <string name="module_app_dialog_panasonic_update">Softwave update permission</string>
+    <string name="module_app_content_panasonic_update">Whether to install lastest softwave?</string>
+    <string name="module_app_dialog_panasonic_sureText">Yes</string>
+    <string name="module_app_dialog_panasonic_cancelText">No</string>
+    <string name="module_app_dialog_panasonic_loading_title">Updateing...</string>
+    <string name="module_app_dialog_panasonic_loading_content">Keep updating software...</string>
+    <string name="module_app_dialog_for_Test">testing!!!</string>
+    <string name="module_app_title_activity_test">TestActivity</string>
+</resources>

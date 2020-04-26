@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    compileSdkVersion rootProject.ext.android['compileSdkVersion']
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    defaultConfig {
+        applicationId "mvvm.arouter.agent.service"
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode 102
+        versionName "0.9.12"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "mvvm_arouter-agent-service_${output.name}_${defaultConfig.versionName}_${releaseTime()}.apk"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+def static releaseTime() {
+    return new Date().format("yyyyMMddHHmm", TimeZone.getTimeZone("Asia/Shanghai"))
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation rootProject.ext.dependencies["androidx:appcompat"]
+    implementation rootProject.ext.dependencies["androidx:constraintlayout"]
+    testImplementation rootProject.ext.dependencies["junit:junit-core"]
+    androidTestImplementation rootProject.ext.dependencies["androidx:test_runner"]
+    androidTestImplementation rootProject.ext.dependencies["androidx:test_espresso-core"]
+    //    api project(':module_http')
+    implementation project(rootProject.ext.dependencies["module"]["moduleCommonLib"])
+//    implementation project(rootProject.ext.dependencies["module"]["moduleHttp"])
+    implementation project(rootProject.ext.dependencies["module"]["moduleCommonBusiness"])
+
+    if (!IS_BUILD_CONFIG_APPLICATION.toBoolean()) {
+        implementation project(rootProject.ext.dependencies["module"]["moduleConfig"])
+    }
+    if (!IS_BUILD_DIAGNOSTICS_APPLICATION.toBoolean()) {
+        implementation project(rootProject.ext.dependencies["module"]["moduleDiagnostics"])
+    }
+    if (!IS_BUILD_DOWNLOAD_APPLICATION.toBoolean()) {
+        implementation project(rootProject.ext.dependencies["module"]["moduleDownload"])
+    }
+    if (!IS_BUILD_GETINFO_APPLICATION.toBoolean()) {
+        implementation project(rootProject.ext.dependencies["module"]["moduleGetInfo"])
+    }
+    if (!IS_BUILD_LOGIN_APPLICATION.toBoolean()) {
+        implementation project(rootProject.ext.dependencies["module"]["moduleLogin"])
+    }
+    if (!IS_BUILD_POLLING_APPLICATION.toBoolean()) {
+        implementation project(rootProject.ext.dependencies["module"]["modulePolling"])
+    }
+    if (!IS_BUILD_UPDATE_APPLICATION.toBoolean()) {
+        implementation project(rootProject.ext.dependencies["module"]["moduleUpdate"])
+    }
+
+    implementation rootProject.ext.dependencies["rxjava2:rxjava-core"]
+    // RxAndroid
+    implementation rootProject.ext.dependencies["rxjava2:rxandroid"]
+    // adapter
+    implementation rootProject.ext.dependencies["retrofit2:adapter-rxjava"]
+
+    //Gson
+    implementation rootProject.ext.dependencies["gson:gson-core"]
+    //retrofit
+    implementation rootProject.ext.dependencies["retrofit2:converter-gson"]
+    implementation rootProject.ext.dependencies["okhttp3:logging-interceptor"]
+
+    //butterknife
+    implementation rootProject.ext.dependencies["butterknife:butterknife-core"]
+    annotationProcessor rootProject.ext.dependencies["butterknife:butterknife-compiler"]
+
+    //arouter
+    implementation rootProject.ext.dependencies["arouter:arouter-api"]
+    annotationProcessor rootProject.ext.dependencies["arouter:arouter-compiler"]
+
+
+
+}

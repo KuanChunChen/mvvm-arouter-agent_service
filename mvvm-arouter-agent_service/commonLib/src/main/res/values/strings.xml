@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">lib_base</string>
+    <string name="title_activity_dialog">DialogActivity</string>
+    <string name="title_dialog">提示：</string>
+    <string name="dialog_sure">是</string>
+    <string name="dialog_cancel">否</string>
+    <string name="dialog_content">SBL安装完成需要重启，是否重启？</string>
+    <string name="dialog_content_battery_30">电量已高于30%，是否开始安装？</string>
+    <string name="dialog_content_battery_10">电量已高于10%，是否开始安装？</string>
+    <string name="countDownTime">%1$d s</string>
+
+    <string name="dialog_panasonic_loading_title"></string>
+    <string name="dialog_panasonic_loading_content"></string>
+    <string name="positiveBtn">Yes</string>
+    <string name="negativeBtn">No</string>
+
+    <string name="dialog_hints_title">Permission Hints</string>
+    <string name="dialog_hints_content">&#160;&#160;&#160;&#160;Without storage permission that we can not to access device info.
+        Then it will unable to communication or download the file from server.
+        Are you sure to denied this permission?\n&#160;&#160;&#160;&#160;Please click \"RE-TRY\" button to re-confirm the permission.
+        And if you have been pressed the \"Never ask again\" before,
+        please go setting page to open storage permission by manually.</string>
+
+    <string name="dialog_hints_btn_ok">Exit</string>
+    <string name="dialog_hints_btn_retry">RE-TRY</string>
+</resources>

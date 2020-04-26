@@ -1,0 +1,14 @@
+{
+  "CTMS": {
+      "Enable": 1
+  },
+  "BootConnect": {
+      "Enable": 1
+  },
+  "Connect": {
+      "Time": 0
+  },
+  "Leave": {
+      "Time": 0
+  }
+}
