@@ -62,7 +62,7 @@ All module list in this Android project :
  - All business logic is in this module.
  - Clear logic and basic class can inherit when developing.
  - Contain basic function,linster,model,po,and business logic.
- - Directory review: ![Directory review](https://github.com/KuanChunChen/MyGitHubImage/blob/develop/cashub/commonbusiness.png)
+ - Directory review: ![Directory review](https://github.com/KuanChunChen/MyGitHubImage/blob/develop/cashub/commonbuniness.png)
 
 
 A. base: 
@@ -121,7 +121,7 @@ public interface PollingService extends IProvider {
 ----
  - All base util and common tool in this module.
  - Some util also can reuse in the future.
- - Directory review: ![Directory review](https://github.com/KuanChunChen/MyGitHubImage/blob/develop/cashub/commonlib.png)
+ - Directory review: ![Directory review](https://github.com/KuanChunChen/MyGitHubImage/blob/develop/cashub/commonLib.png)
 
 #### http module
 ----
