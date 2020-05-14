@@ -4,7 +4,7 @@
 # Preface
 ----------
 This application is an andorid service and it contain several features such as diagnostic,login,update,polling...,and each of then are independent module in this project.
-And use the Arouter frame to communication with each module
+And use the Arouter frame to communication with each module.
 
 All module list in this Android project :
   - commonBusiness
@@ -55,9 +55,75 @@ All module list in this Android project :
     ```
  - Thus,if there are several gradle file,they also can use this method to set the gradle's constants.
 
-# Module
+# Module Description
 ----------
+
+#### commonBusiness module
+ - All business logic is in this module.
+ - Clear logic and basic class can inherit when developing.
+ - Contain basic function,linster,model,po,and business logic.
+ - Module strcture: website.
+ - Directory review:
+
+A. base: 
+
+The directory **"base"** contain base function to reuse,implement or import.
+ - 1.ModuleBaseApplication.class
+--> Base class of Android Application that can inherit or access directly.
+
+ - 2.BaseServiceImpl.class
+--> Because there are several different impelment interface, so this base impelment class can let other impelment class hava base features.
+E.g.Example of base Android Application.
+```java
+public class ModuleBaseApplication extends Application {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        if (BuildConfig.DEBUG) {
+            ARouter.openLog(); 
+            ARouter.openDebug();
+        }
+        ARouter.init(this);
+        CommonLib.openDebug();
+        CommonLib.init(this);
+        CommonSingle.getInstance().getConfigService().initConfig();
+        ...
+        ...
+    }
+}
+```
+B.Common: 
+The directory **"Common"** contain some class about const, common tool, linster or manager.
+
+C.lister:
+The directory **"lister"** contain some linster interface that need to impelment.
+
+D.model and po:
+Both of  **"model"** and **"po"** are contain some data model or po data model and its will use in this project.
+
+E.service: 
+The directory **"service"** contain business logic's interface and each of interface are inherit the **IProvider**.
+- The concept in this directory is some function your app will need to use, so you will creat some neccessary function in this directory.
+E.g.
+-->You may need some features that can do polling feature, so wrote some code like this :
+```java
+public interface PollingService extends IProvider {
+
+    void updateNow();
+    void startSchedule();
+    void stopSchedule();
+}
+
+```
+
+#### commonLib module
+----
+ - All base util and common tool in this module.
+ - Some util also can reuse in the future.
+
 #### http module
+----
  - Use retrofit2 + okhttp3 + rxjava to communicate with server.
  - With MVVM frame.
  - This module use generic to let http execute can expand by developer.
@@ -326,4 +392,3 @@ public class LoginServiceImpl extends BaseServiceImpl implements LoginService {
 }
 
 ```
-
