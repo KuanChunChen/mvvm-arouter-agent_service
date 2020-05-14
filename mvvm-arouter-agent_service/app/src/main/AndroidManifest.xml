@@ -35,7 +35,7 @@
         </receiver>
 
         <service
-            android:name="mvvm.arouter.agent.service"
+            android:name="k.c.service.CtmsApiService"
             android:persistent="true">
             <intent-filter>
                 <action android:name="castles.android.CTMSAPI" />
