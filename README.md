@@ -62,8 +62,8 @@ All module list in this Android project :
  - All business logic is in this module.
  - Clear logic and basic class can inherit when developing.
  - Contain basic function,linster,model,po,and business logic.
- - Module strcture: website.
- - Directory review:
+ - Directory review: ![Directory review](https://github.com/KuanChunChen/MyGitHubImage/blob/develop/cashub/commonbusiness.png)
+
 
 A. base: 
 
@@ -121,13 +121,15 @@ public interface PollingService extends IProvider {
 ----
  - All base util and common tool in this module.
  - Some util also can reuse in the future.
+ - Directory review: ![Directory review](https://github.com/KuanChunChen/MyGitHubImage/blob/develop/cashub/commonlib.png)
 
 #### http module
 ----
  - Use retrofit2 + okhttp3 + rxjava to communicate with server.
  - With MVVM frame.
  - This module use generic to let http execute can expand by developer.
- - Directory structure : website.
+ - Directory review: ![Directory review](https://github.com/KuanChunChen/MyGitHubImage/blob/develop/cashub/http.png)
+
  
 ##### **How it work ?**
 - There are several part in this module:
@@ -340,7 +342,7 @@ Step4.Final,you can call the function you wrote before in easy way.
 
 #### login module
 =======
- - Directory structure : website.
+ - Directory review: ![Directory review](https://github.com/KuanChunChen/MyGitHubImage/blob/develop/cashub/login.png)
  
 Just use Retrofit2 to create interface and implement login and logout feature.
 E.g.
@@ -392,3 +394,113 @@ public class LoginServiceImpl extends BaseServiceImpl implements LoginService {
 }
 
 ```
+
+#### dignostic module
+----
+ - Get android client data and post it to server.
+ - Directory review: ![Module Structure](https://github.com/KuanChunChen/MyGitHubImage/blob/develop/cashub/diagnostic.png)
+ - Diagnostic data json format : 
+ ```json
+ {
+    "application":{
+        "Apps":[
+            {
+            "Description":0,
+            "InstallDateTime":1230768000000,
+            "PackagName":"com.example.casw2_d_link.ctms_app",
+            "ProcessName":"com.example.casw2_d_link.ctms_app",
+            "UpdateDateTime":1230768000000,
+            "VRC":2,
+            "VRN":"2.0.16"
+            },
+            {
+            "Description":0,
+            "InstallDateTime":1577679038784,
+            "PackagName":"k.c.prm",
+            "ProcessName":"k.c.prm",
+            "UpdateDateTime":1577679038784,
+            "VRC":3,
+            "VRN":"1.0.1"
+            }
+        ],
+        "Running Apps":[
+            {
+            "AppName":"com.example.casw2_d_link.ctms_app",
+            "PID":5845
+            }
+        ],
+        "Running Services":[
+            {
+            "ActiveSince":41457,
+            "CrashCount":0,
+            "LastActivityTime":41457,
+            "PID":3908,
+            "ServiceName":"android.ctms_service"
+            }
+        ]
+    },
+    "battery_level":89,
+    "device":{
+        "ASPL":" [2017-01-07]",
+        "Android Version":"6.0.1",
+        "Baseband Version":"BP01.006(SC20ESAR04A06_CT)",
+        "Build Version":"1.1.1.d12251",
+        "Kernel Version":"3.10.49.101311",
+        "Model Number":"Saturn1000_Uart",
+        "Up time":"04:56:12"
+    },
+    "free_memory":324,
+    "latitude":0.0,
+    "longitude":0.0,
+    "ENTID":"",
+    "security":{
+    },
+    "sn":"3000000000000458",
+    "system":{
+        "Battery":{
+            "level":89,
+            "Battery Status":"Charging",
+            "Temperature":"30.6°C",
+            "Status":"BATTERY_PLUGGED_USB",
+            "Voltage":"3.944V"
+        },
+        "Device":{
+            "ASPL":" [2017-01-07]",
+            "Android Version":"6.0.1",
+            "Baseband Version":"BP01.006(SC20ESAR04A06_CT)",
+            "Build Version":"1.1.1.d12251",
+            "Kernel Version":"3.10.49.101311",
+            "Model Number":"Saturn1000_Uart",
+            "Up time":"04:56:12"
+        },
+        "location":{
+            "latitude":0.0,
+            "longitude":0.0
+        },
+        "memory":{
+            "Available Space":309,
+            "Total Space":900
+        },
+        "Network":{
+            "IPv4":"192.168.8.6",
+            "IPv6":"fe80::c624:9d64:173:5975%r_rmnet_data0",
+            "Bluetooth Address":"A4:86:AE:84:0F:5E",
+            "WLAN Mac Address":"A4:86:AE:84:10:59"
+        },
+        "SIM Status":{
+            "Cellular Network Type":"GSM",
+            "imei":"865067039858892",
+            "imei (Slot1)":0,
+            "imei (Slot2)":0,
+            "isRoaming":"Not Roming",
+            "Network":"UNKNOWN",
+            "Operator Info":"",
+            "Signal Strengh":"Not available"
+        },
+        "TIME":{
+            "GTZ":"2019-12-30 06:54:25",
+            "STZ":"+00:00"
+        }
+    }
+}
+ ```
